@@ -5,10 +5,17 @@
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     <title>Jessica's Secret Kitchen</title>
 
-    <link rel="stylesheet" href = "src/css/main.css">
-    <script src = "src/javascript/main.js" defer></script> 
+    <link rel="stylesheet" href = "src/main.css">
+    <script src = "src/main.js" defer></script> 
 
 <body>
+    <h1>
+        <span>W</span><span>e</span><span>l</span><span>c</span><span>o</span><span>m</span><span>e</span>
+        <span>t</span><span>o</span>
+        <span>J</span><span>e</span><span>s</span><span>s</span><span>i</span><span>c</span><span>a</span><span>'</span><span>s</span>
+        <span>S</span><span>e</span><span>c</span><span>r</span><span>e</span><span>t</span>
+        <span>K</span><span>i</span><span>t</span><span>c</span><span>h</span><span>e</span><span>n</span>
+    </h1>
     <div id="recipes-app"> 
         <button class="add-recipe" type="button">Add Recipe</button>
     </div>
@@ -18,12 +25,14 @@
             <span class="close">&times;</span>
             <h2>Add/Edit Recipe</h2>
             <form id="recipe-form">
-                <label for="recipe-title">Title:</label>
+                <label for="recipe-title">Recipe Title:</label>
                 <input type="text" id="recipe-title" name="title" required>
-                <label for="recipe-ingredients">Ingredients:</label>
+                <br />
+                <label class="textlabel" for="recipe-ingredients">Ingredients:</label>
                 <textarea id="recipe-ingredients" name="ingredients" required></textarea>
-                <label for="recipe-steps">Steps:</label>
+                <label class="textlabel" for="recipe-steps">Steps:</label>
                 <textarea id="recipe-steps" name="steps" required></textarea>
+                <br />
                 <button type="submit">Save</button>
             </form>
         </div>
