@@ -42,21 +42,21 @@ document.addEventListener("DOMContentLoaded", () => {
         const recipeDiv = document.createElement("div");
         recipeDiv.classList.add("recipe");
         recipeDiv.innerHTML = `
-            <h3>${title}</h3>
-            <p><strong>Ingredients:</strong> ${ingredients}</p>
-            <p><strong>Steps:</strong> ${steps}</p>
-            <button class="edit-recipe">Edit</button>
-            <button class="delete-recipe">Delete</button>
-            <div class="grade-section">
-                <input type="number" class="grade-input" min="0" max="10" placeholder="0-10">
-                <button class="submit-grade">Grade</button>
-                <span class="grade-average">Average: ${calculateAverage(grades)} (${grades.length})</span>
-            </div>
-            <div class="comments-section">
-                <textarea class="comment-input" placeholder="Add a comment..."></textarea>
-                <button class="add-comment">Add Comment</button>
-                <div class="comments">${comments.map(comment => createCommentHTML(comment)).join('')}</div>
-            </div>
+        <h3>${title}</h3>
+        <p><strong>Ingredients:</strong> ${ingredients}</p>
+        <p><strong>Steps:</strong> ${steps}</p>
+        <button class="edit-recipe">Edit</button>
+        <button class="delete-recipe">Delete</button>
+        <div class="grade-section">
+            <input type="number" class="grade-input" min="0" max="10" placeholder="0-10">
+            <button class="submit-grade">Grade</button>
+            <span class="grade-average">Average: ${calculateAverage(grades)} (${grades.length})</span>
+        </div>
+        <div class="comments-section">
+            <textarea class="comment-input" placeholder="Add a comment..."></textarea>
+            <button class="add-comment">Add Comment</button>
+            <div class="comments">${comments.map(comment => createCommentHTML(comment)).join('')}</div>
+        </div>
         `;
         document.getElementById("recipes-app").appendChild(recipeDiv);
 
