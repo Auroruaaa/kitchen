@@ -7,7 +7,7 @@ body {
 
 h1{
     font-size: 42px;
-    color: rgb(109, 71, 0);
+    color: rgb(73, 43, 0);
     background-color: rgba(255, 250, 237, 0.89);
     position: relative;
     left: 1vw;
@@ -35,13 +35,14 @@ h1 span {
     background: rgba(255, 255, 255, 0.551);
     border-radius: 10px;
     font-size: 28px;
-
-    color:rgba(0, 0, 0, 0.5);
+    color:rgb(73, 43, 0);
     cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.40);
     transition: background 800ms;
 }
 
 .add-recipe:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.40);
     background: rgba(255, 250, 237, 0.89);
 }
 
@@ -57,7 +58,7 @@ h1 span {
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.551);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.40);
-
+    color: rgb(73, 43, 0);
     resize: vertical;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
