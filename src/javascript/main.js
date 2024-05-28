@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     addRecipeButton.addEventListener("click", () => {
         recipeFormModal.style.display = "block";
         editingRecipeDiv = null;  // Reset editing state
+        recipeForm.reset();
     });
 
     closeModalButton.addEventListener("click", () => {
@@ -24,10 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     recipeForm.addEventListener("submit", (event) => {
         event.preventDefault();
+        recipes = JSON.parse(localStorage.getItem("recipes")) || [];
         const title = document.getElementById("recipe-title").value;
         const ingredients = document.getElementById("recipe-ingredients").value;
         const steps = document.getElementById("recipe-steps").value;
-        
         if (editingRecipeDiv) {
             updateRecipe(editingRecipeDiv, title, ingredients, steps);
         } else {
@@ -36,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         recipeFormModal.style.display = "none";
         recipeForm.reset();
+        saveRecipesToLocalStorage();
     });
 
     function addRecipe(title, ingredients, steps, grades = [], comments = []) {
@@ -46,11 +48,11 @@ document.addEventListener("DOMContentLoaded", () => {
         <p><strong>Ingredients:</strong> ${ingredients}</p>
         <p><strong>Steps:</strong> ${steps}</p>
         <button class="edit-recipe">Edit</button>
-        <button class="delete-recipe">Delete</button>
+        <button class="delete-recipe"><img src="https://github.com/Auroruaaa/kitchen/blob/main/src/image/delete_button.png?raw=true" alt="DeleteButton"></button>
         <div class="grade-section">
-            <input type="number" class="grade-input" min="0" max="10" placeholder="0-10">
+            <input type="number" class="grade-input" min="0" max="100" placeholder="0-100">
             <button class="submit-grade">Grade</button>
-            <span class="grade-average">Average: ${calculateAverage(grades)} (${grades.length})</span>
+            <span class="grade-average">Avg: ${calculateAverage(grades)} (${grades.length})</span>
         </div>
         <div class="comments-section">
             <textarea class="comment-input" placeholder="Add a comment..."></textarea>
@@ -62,8 +64,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         recipeDiv.grades = grades;
         recipeDiv.comments = comments;
+        saveRecipesToLocalStorage();
 
+        recipeForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+            title = document.getElementById("recipe-title").value;
+            ingredients = document.getElementById("recipe-ingredients").value;
+            steps = document.getElementById("recipe-steps").value;
+        });
+        
         recipeDiv.querySelector(".edit-recipe").addEventListener("click", () => {
+            console.log(ingredients);
             editRecipe(recipeDiv, title, ingredients, steps);
         });
 
@@ -80,7 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
         addCommentButton.addEventListener("click", () => {
             addComment(recipeDiv);
         });
-
         saveRecipesToLocalStorage();
     }
 
@@ -89,6 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
         recipeDiv.querySelector("p:nth-child(2)").innerText = `Ingredients: ${ingredients}`;
         recipeDiv.querySelector("p:nth-child(3)").innerText = `Steps: ${steps}`;
         saveRecipesToLocalStorage();
+
     }
 
     function editRecipe(recipeDiv, title, ingredients, steps) {
@@ -97,6 +109,8 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("recipe-steps").value = steps;
         recipeFormModal.style.display = "block";
         editingRecipeDiv = recipeDiv;  // Set editing state
+        // console.log(ingredients);
+
     }
 
     function deleteRecipe(recipeDiv) {
@@ -109,16 +123,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const gradeValue = parseFloat(gradeInput.value);
         const gradeAverageSpan = recipeDiv.querySelector(".grade-average");
 
-        if (gradeValue >= 0 && gradeValue <= 10) {
+        if (gradeValue >= 0 && gradeValue <= 100) {
             const grades = recipeDiv.grades || [];
             grades.push(gradeValue);
             recipeDiv.grades = grades;
             const average = calculateAverage(grades);
-            gradeAverageSpan.innerText = `Average: ${average} (${grades.length})`;
+            gradeAverageSpan.innerText = `Avg: ${average} (${grades.length})`;
             gradeInput.value = "";
             saveRecipesToLocalStorage();
         } else {
-            alert("Please enter a valid grade between 1 and 10.");
+            alert("Please enter a valid grade between 0 and 100.");
         }
     }
 
@@ -159,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="comment">
                 <p>${comment.text}</p>
                 <button class="edit-comment">Edit</button>
-                <button class="delete-comment">Delete</button>
+                <button class="delete-comment"><img src="https://github.com/Auroruaaa/kitchen/blob/main/src/image/delete_button.png?raw=true" alt="DeleteButton"></button>
             </div>
         `;
     }

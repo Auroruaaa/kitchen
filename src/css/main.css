@@ -1,7 +1,9 @@
+/* Page font color: rgb(73, 43, 0) */
 body {
     margin: 0;
     background-image: url(https://github.com/Auroruaaa/kitchen/blob/main/src/image/background.jpg?raw=true);
-    background-size: 100%;
+    background-size: 105%;
+    background-position: center;
     font-family: 'Courier New', Courier, monospace;
 }
 
@@ -9,14 +11,16 @@ h1{
     font-size: 42px;
     color: rgb(73, 43, 0);
     background-color: rgba(255, 250, 237, 0.89);
-    position: relative;
-    left: 1vw;
+
 }
 
 h1 span {
     display: inline-block;
-    animation: wiggle 1.5s infinite
+    animation: wiggle 1.5s infinite;
+    position: relative;
+    left: 1vw;
 }
+
 #recipes-app {
     display: grid;
     grid-template-columns: repeat(auto-fill, 290px);
@@ -35,6 +39,7 @@ h1 span {
     background: rgba(255, 255, 255, 0.551);
     border-radius: 10px;
     font-size: 28px;
+    font-weight: bold;
     color:rgb(73, 43, 0);
     cursor: pointer;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.40);
@@ -66,6 +71,14 @@ h1 span {
     transition: background 500ms;
 }
 
+.recipe h3 {
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    text-decoration: underline;
+}
 .recipe:hover {
     background-color: rgba(255, 250, 237, 0.89);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.40);
@@ -132,19 +145,55 @@ input {
     display: flex;
     align-items: center;
     margin-top: 10px;
+    position: relative;
+    bottom: 10px;
 }
 
 .grade-input {
+    height: 15px;
     width: 50px;
     margin-right: 10px;
+    position: relative;
+    top: 7px;
 }
 
 .grade-average {
-    font-size: 20px;
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
-    color: gray;
+    color: rgb(73, 43, 0);
+    position: relative;
+    left: 15px;
 }
 
+.delete-recipe {
+    background: none;
+    border: none;
+    padding: 0;
+    position: relative;
+    top: 10px;
+}
+.delete-recipe img:hover{
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.60))
+}
+.delete-recipe img{
+    height: 32px;
+    width: 48px;
+}
+.delete-comment {
+    background: none;
+    border: none;
+    padding: 0;
+    position: relative;
+    top: 10px;
+}
+.delete-comment img:hover{
+    filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.60))
+}
+.delete-comment img{
+    height: 22px;
+    width: 32px;
+}
 @keyframes wiggle {
     0% {transform: rotate(0deg); }
     25% {transform: rotate(12deg); }
