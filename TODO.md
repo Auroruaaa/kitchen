@@ -6,9 +6,9 @@
 
 ## UI ##
 
-* The Delete Button icon
+* The Delete Button icon  ✅
 
-* Entire page style
+* Entire page style 
 
 
 ## Logics ##
